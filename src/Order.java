@@ -8,12 +8,12 @@ import java.util.Deque;
  */
 public class Order {
     public static void main(String[] args) {
-        TreeNode node = new TreeNode(1);
-        node.left = new TreeNode(2);
-        node.right = new TreeNode(3);
+//        TreeNode node = new TreeNode(1);
+//        node.left = new TreeNode(2);
+//        node.right = new TreeNode(3);
 //        inorder(node);
 //        preorder(node);
-        postorder(node);
+//        postorder(node);
     }
 
 
@@ -75,8 +75,8 @@ public class Order {
     }
 }
 
-class TreeNode {
-    int val;
+abstract class TreeNode {
+    final int val;
     TreeNode left;
     TreeNode right;
 
