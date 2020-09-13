@@ -1,6 +1,5 @@
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Deque;
+import java.math.BigInteger;
+import java.util.*;
 
 /**
  * @author: codeJerry
@@ -109,11 +108,28 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Main main = new Main();
-        System.out.println(main.shortestPalindrome("aacecaaa"));
-        StringBuilder sb = new StringBuilder();
-        String s = "  ";
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String[] strs = s.split(",");
+        int[] nums = new int[strs.length];
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = Integer.parseInt(strs[i]);
+        }
+
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i]) - 1;
+            if (nums[index] < 0) {
+                ans.add(Math.abs(nums[i]));
+            }
+            nums[index] = -nums[index];
+        }
+        for (Integer an : ans) {
+            System.out.print(an);
+            System.out.print(" ");
+        }
     }
+
 
 }
 

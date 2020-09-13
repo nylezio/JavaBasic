@@ -1,4 +1,4 @@
-package com.codejerry.哔哩哔哩;
+package com.codejerry.哔哩;
 
 import java.util.*;
 
@@ -88,9 +88,9 @@ public class Main {
         int ans = 0;
         int sum = 1024 - N;
         int[] coins = new int[]{64, 16, 4, 1};
-        for (int i = 0; i < coins.length; i++) {
-            ans += sum / coins[i];
-            sum %= coins[i];
+        for (int coin : coins) {
+            ans += sum / coin;
+            sum %= coin;
         }
         return ans;
     }
