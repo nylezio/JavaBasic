@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 import java.util.*;
 
 /**
@@ -107,29 +106,60 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String s = sc.next();
-        String[] strs = s.split(",");
-        int[] nums = new int[strs.length];
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = Integer.parseInt(strs[i]);
-        }
-
-        List<Integer> ans = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            int index = Math.abs(nums[i]) - 1;
-            if (nums[index] < 0) {
-                ans.add(Math.abs(nums[i]));
-            }
-            nums[index] = -nums[index];
-        }
-        for (Integer an : ans) {
-            System.out.print(an);
-            System.out.print(" ");
-        }
+    public static void main(String[] args) throws Exception {
+        System.out.println(stringToFloat("-10.12340112"));
     }
 
+    public static float stringToFloat(String s) throws Exception {
+        if (s == null || s.length() == 0) {
+            throw new Exception("字符串是空");
+        }
+
+        String[] strs = s.trim().split("\\.");
+        if (strs.length > 2) {
+            throw new Exception("输入无效字符串");
+        }
+
+        int sign = 1;
+        int i = 0;
+        char firstChar;
+        if ((firstChar = strs[0].charAt(0)) == '-') {
+            sign = -1;
+            i = 1;
+        } else if (firstChar == '+') {
+            i = 1;
+        } else if (!Character.isDigit(firstChar)) {
+            throw new Exception("输入无效字符串");
+        }
+        float ans = 0;
+        while (i < strs[0].length()) {
+            if (Character.isDigit(strs[0].charAt(i))) {
+                ans = ans * 10 + (strs[0].charAt(i) - '0');
+                i++;
+            } else {
+                throw new Exception("输入无效字符串");
+            }
+        }
+        if (strs.length == 2) {
+            float tmp = 0;
+            float t = (float) 0.1;
+            int j = 0;
+            while (j < strs[1].length()) {
+                if (Character.isDigit(strs[1].charAt(j))) {
+                    tmp += t * (strs[1].charAt(j) - '0');
+                    t *= 0.1;
+                    j++;
+                } else {
+                    throw new Exception("输入无效字符串");
+                }
+            }
+            ans += tmp;
+        }
+
+        return sign * ans;
+
+
+    }
 
 }
 
