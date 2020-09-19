@@ -10,6 +10,7 @@ import java.util.*;
 public class Main {
     /**
      * 227基本计算器II
+     *
      * @param s 字符串
      * @return 最终的值
      */
@@ -47,8 +48,46 @@ public class Main {
         return ans;
     }
 
-
-
+    /**
+     * 和大于等于K的最短子数组
+     *
+     * @param A
+     * @param K
+     */
+    public int shortestSubarray(int[] A, int K) {
+        int ans = Integer.MAX_VALUE;
+        TreeMap<Long, Integer> sumDataMap = new TreeMap<>();
+        long sum = 0;
+        long smallSum = A[0];
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] >= K) {
+                return 1;
+            }
+            sum += A[i];
+            if (sum >= K) {
+                ans = Math.max(ans, i + 1);
+            }
+            long sub = sum - K;
+            while (!sumDataMap.isEmpty()) {
+                Map.Entry<Long, Integer> entry = sumDataMap.floorEntry(sub);
+                if (entry == null) {
+                    break;
+                }
+                long key = entry.getKey();
+                int j = entry.getValue();
+                sumDataMap.remove(key);
+                if (i - j < ans) {
+                    ans = i - j;
+                }
+            }
+            if (sum < smallSum) {
+                sumDataMap.clear();
+                smallSum = sum;
+            }
+            sumDataMap.put(sum, i);
+        }
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
 
 
 }
