@@ -22,7 +22,7 @@ public class S2ContainsS1 {
     }
 
 
-    /**
+    /**'
      * KMP
      */
     public static boolean checkInclusion(String s1, String s2) {
@@ -54,7 +54,6 @@ public class S2ContainsS1 {
             }
             System.out.println("i " + i);
             System.out.println("best " + best);
-
         }
 
         return false;

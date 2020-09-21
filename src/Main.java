@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  * @date: 2020/08/26 16:16
  */
 public class Main {
+
     /**
      * 227基本计算器II
      *
@@ -116,10 +117,11 @@ public class Main {
         List<Integer> result = list.stream().filter((value) -> value > 2).collect(Collectors.toList());
         result.forEach((value) -> System.out.print(value + " "));
         System.out.println();
-        System.out.println(list.stream().max((a,b)->(a - b)).get());
-        System.out.println(list.stream().min((a,b)->(a - b)).get());
+        System.out.println(list.stream().max((a, b) -> (a - b)).get());
+        System.out.println(list.stream().min((a, b) -> (a - b)).get());
         System.out.println(list.stream().reduce(Integer::sum).get());
         getMethods();
+
     }
 
     public static float stringToFloat(String s) throws Exception {
@@ -176,7 +178,7 @@ public class Main {
     /**
      * 动态生成类的字节码,并打印动态类的每个方法
      */
-    public static void getMethods(){
+    public static void getMethods() {
         //动态生成代理类
         Class clazzProxy1 = Proxy.getProxyClass(Collection.class.getClassLoader(), Collection.class);
 
@@ -185,7 +187,7 @@ public class Main {
 
         System.out.println("---------------------begin Construstors-----------------");
         //遍历构造方法
-        for (Method method: methods) {
+        for (Method method : methods) {
             //获取每个名称
             String name = method.getName();
             StringBuilder sb = new StringBuilder(name);
@@ -195,7 +197,7 @@ public class Main {
             for (Class clazzType : clazzTypes) {
                 sb.append(clazzType.getName()).append(".");
             }
-            if(clazzTypes != null && clazzTypes.length != 0){
+            if (clazzTypes != null && clazzTypes.length != 0) {
                 sb.deleteCharAt(sb.length() - 1);
             }
             sb.append(")");
