@@ -18,15 +18,17 @@ public class Int {
                 // 判断最小值
                 int min = nums[i] + nums[start] + nums[start + 1];
                 if (target < min) {
-                    if (Math.abs(min - target) < Math.abs(ans - target))
+                    if (Math.abs(min - target) < Math.abs(ans - target)) {
                         ans = min;
+                    }
                     break;
                 }
                 //判断最大值
                 int max = nums[i] + nums[end] + nums[end - 1];
                 if (target > max) {
-                    if (Math.abs(max - target) < Math.abs(ans - target))
+                    if (Math.abs(max - target) < Math.abs(ans - target)) {
                         ans = max;
+                    }
                     break;
                 }
 

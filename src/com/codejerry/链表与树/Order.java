@@ -1,3 +1,5 @@
+package com.codejerry.链表与树;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -8,12 +10,12 @@ import java.util.Deque;
  */
 public class Order {
     public static void main(String[] args) {
-//        TreeNode node = new TreeNode(1);
-//        node.left = new TreeNode(2);
-//        node.right = new TreeNode(3);
-//        inorder(node);
-//        preorder(node);
-//        postorder(node);
+        TreeNode node = new TreeNode(1);
+        node.left = new TreeNode(2);
+        node.right = new TreeNode(3);
+        inorder(node);
+        preorder(node);
+        postorder(node);
     }
 
 
@@ -72,15 +74,5 @@ public class Order {
             }
 
         }
-    }
-}
-
-abstract class TreeNode {
-    final int val;
-    TreeNode left;
-    TreeNode right;
-
-    public TreeNode(int val) {
-        this.val = val;
     }
 }
