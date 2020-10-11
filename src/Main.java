@@ -55,23 +55,6 @@ public class Main {
         return a == 0 ? b : gcb(b % a, a);
     }
 
-
-    public static int claim(int n) {
-        if (n == 1) {
-            return 1;
-        }
-        int[] dp = new int[n + 1];
-        for (int i = 1; i < n + 1; i++) {
-            for (int j = 1; j < i && j <= 6; j++) {
-                dp[i] += dp[i - j];
-            }
-            if (i <= 6) {
-                dp[i] += 1;
-            }
-        }
-        return dp[n];
-    }
-
     /**
      * 给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。
      * 找到并返回可以用这种方式转换的最短回文串。
@@ -112,16 +95,9 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        System.out.println(stringToFloat("-10.12340112"));
-
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> result = list.stream().filter((value) -> value > 2).collect(Collectors.toList());
-        result.forEach((value) -> System.out.print(value + " "));
-        System.out.println();
-        System.out.println(list.stream().max((a, b) -> (a - b)).get());
-        System.out.println(list.stream().min((a, b) -> (a - b)).get());
-        System.out.println(list.stream().reduce(Integer::sum).get());
-
+        int[] nums = new int[]{5,3,8,2,6};
+        quickSort(nums);
+        System.out.println(Arrays.toString(nums));
 
     }
 
@@ -176,7 +152,43 @@ public class Main {
 
     }
 
+    public static void quickSort(int[] nums) {
+        int n;
+        if ((n = nums.length) == 0) {
+            return;
+        }
+        quickSort(nums, 0, n - 1);
+    }
 
+    public static void quickSort(int[] nums, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int t = nums[l];
+        int i = l + 1;
+        int j = r;
+        while (true) {
+            while (i < r && nums[i] <= t) {
+                i++;
+            }
+            while (j > l && nums[j] >= t) {
+                j--;
+            }
+            if (i >= j) {
+                break;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, l, j);
+        quickSort(nums, l, j - 1);
+        quickSort(nums, j + 1, r);
+    }
+
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 
 
 }
