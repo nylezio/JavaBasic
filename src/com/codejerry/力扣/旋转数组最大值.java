@@ -6,7 +6,7 @@ package com.codejerry.力扣;
  * 旋转数组最大值
  * @date: 2020/08/05 21:28
  */
-public class XuanzhuanShuZuMax {
+public class 旋转数组最大值 {
     public static void main(String[] args) {
         int[] nums = new int[]{3,4,5,1,2};
         int i = 0;

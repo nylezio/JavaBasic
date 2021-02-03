@@ -98,9 +98,7 @@ public class Main {
         int[] nums = new int[]{5,3,8,2,6};
         quickSort(nums);
         System.out.println(Arrays.toString(nums));
-
     }
-
     public static float stringToFloat(String s) throws Exception {
         if (s == null || s.length() == 0) {
             throw new Exception("字符串是空");
@@ -185,11 +183,10 @@ public class Main {
     }
 
     private static void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
+        int tmp = nums[i];
         nums[i] = nums[j];
-        nums[j] = temp;
+        nums[j] = tmp;
     }
-
 
 }
 
