@@ -188,6 +188,7 @@ public class Main {
 
 
 
+    // 45。跳跃游戏II 动态规划
     public int jump(int[] nums) {
         int n = nums.length;
         int[] dp = new int[n];
@@ -201,6 +202,22 @@ public class Main {
         }
         return dp[n - 1];
     }
+    // 45。跳跃游戏II 贪心
+    public int jump1(int[] nums) {
+        int step = 0;
+        int end = 0;
+        int n = nums.length;
+        int max = 0;
+        for (int i = 0; i < n - 1; i++) {
+            max = Math.max(max, i + nums[i]);
+            if (i == end) {
+                end = max;
+                step++;
+            }
+        }
+        return step;
+    }
+
 
 
 }
